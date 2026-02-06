@@ -4,110 +4,142 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Graduation Invitation — Dr. Harika Killi</title>
-  <meta name="description" content="Graduation invitation for Dr. Harika Killi — 21 Feb 2026, 5:00 PM, Dr. PSIMS & RF" />
 
   <style>
     :root{
       --bgA:#fff1f7;      /* blush */
       --bgB:#f3f8ff;      /* baby blue */
       --bgC:#f7f3ff;      /* lavender */
-      --card:#ffffffcc;
-      --ink:#1f2937;
+      --ink:#111827;
       --muted:#6b7280;
       --rose:#f472b6;
       --rose2:#ec4899;
       --lav:#a78bfa;
       --mint:#2dd4bf;
-      --line:#1118271a;
-      --shadow: 0 24px 70px rgba(31,41,55,.18);
-      --radius: 22px;
+      --shadow: 0 22px 60px rgba(31,41,55,.16);
+      --radius: 24px;
     }
 
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--ink);
       background:
         radial-gradient(900px 520px at 18% 15%, rgba(244,114,182,.35) 0%, transparent 60%),
         radial-gradient(900px 520px at 82% 18%, rgba(167,139,250,.30) 0%, transparent 60%),
-        radial-gradient(900px 520px at 55% 90%, rgba(45,212,191,.20) 0%, transparent 62%),
+        radial-gradient(900px 520px at 55% 90%, rgba(45,212,191,.18) 0%, transparent 62%),
         linear-gradient(180deg, var(--bgA), var(--bgB) 55%, var(--bgC));
       overflow-x:hidden;
     }
 
-    /* Soft medical pattern */
+    /* Soft pattern */
     .pattern{
       pointer-events:none;
       position:fixed; inset:0;
-      opacity:.18;
+      opacity:.16;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='none' stroke='%239ca3af' stroke-width='2' opacity='0.45'%3E%3Cpath d='M60 60c0 16 12 28 28 28s28-12 28-28V40'/%3E%3Cpath d='M88 88v18c0 20 16 36 36 36s36-16 36-36v-6'/%3E%3Ccircle cx='124' cy='100' r='10'/%3E%3Cpath d='M124 90v20M114 100h20'/%3E%3C/g%3E%3Cg fill='none' stroke='%23ec4899' stroke-width='2' opacity='0.35'%3E%3Cpath d='M170 60h12v-12h10v12h12v10h-12v12h-10v-12h-12z'/%3E%3C/g%3E%3C/svg%3E");
       background-size: 220px 220px;
     }
 
-    /* Layout wrapper: uses dynamic viewport height on mobile (prevents jump) */
+    /* Confetti canvas */
+    canvas#confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:999;
+    }
+
     .wrap{
-      min-height: 100vh;
-      min-height: 100svh;
-      min-height: 100dvh;
+      min-height:100vh;
+      min-height:100svh;
+      min-height:100dvh;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: clamp(18px, 4vw, 34px) clamp(14px, 3.2vw, 18px) 64px;
+      padding: clamp(18px, 4vw, 34px) clamp(14px, 3.2vw, 18px) 56px;
     }
 
+    /* MAIN CARD */
     .card{
       width:min(980px, 100%);
-      background: linear-gradient(180deg, rgba(255,255,255,.80), rgba(255,255,255,.62));
-      border:1px solid rgba(17,24,39,.10);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
       position:relative;
       overflow:hidden;
-      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
       transform: translateY(10px);
       opacity:0;
-      animation: enter .9s ease forwards;
-      will-change: transform, opacity;
+      animation: enter .85s ease forwards;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(10px);
     }
     @keyframes enter{ to{transform:translateY(0); opacity:1} }
 
-    /* Decorative ribbons */
-    .ribbon{
+    /* Animated 4-sides border */
+    .card::before{
+      content:"";
       position:absolute;
-      inset:-120px auto auto -120px;
-      width:320px; height:320px;
-      background: radial-gradient(circle at 30% 30%, rgba(244,114,182,.55) 0%, transparent 65%);
-      filter: blur(10px);
-      transform: rotate(-8deg);
+      inset:0;
+      padding:2px;
+      border-radius: var(--radius);
+      background: conic-gradient(
+        from 0deg,
+        rgba(236,72,153,.85),
+        rgba(167,139,250,.75),
+        rgba(45,212,191,.70),
+        rgba(236,72,153,.85)
+      );
+      animation: spin 7s linear infinite;
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity:.9;
+      pointer-events:none;
     }
-    .ribbon2{
-      position:absolute;
-      inset:auto -140px -140px auto;
+    @keyframes spin{ to{transform:rotate(360deg)} }
+
+    /* Border reacts on hover */
+    .card:hover::before{
+      animation-duration: 2.6s;
+      opacity: 1;
+    }
+
+    /* Soft corner glows */
+    .glowA{
+      position:absolute; inset:-140px auto auto -140px;
       width:360px; height:360px;
-      background: radial-gradient(circle at 55% 45%, rgba(167,139,250,.45) 0%, transparent 65%);
-      filter: blur(10px);
-      transform: rotate(10deg);
+      background: radial-gradient(circle at 30% 30%, rgba(244,114,182,.55) 0%, transparent 64%);
+      filter: blur(12px);
+      pointer-events:none;
+    }
+    .glowB{
+      position:absolute; inset:auto -170px -170px auto;
+      width:420px; height:420px;
+      background: radial-gradient(circle at 55% 45%, rgba(167,139,250,.45) 0%, transparent 66%);
+      filter: blur(12px);
+      pointer-events:none;
     }
 
     header{
-      padding: clamp(18px, 3vw, 28px) clamp(16px, 3vw, 28px) 0;
       text-align:center;
+      padding: clamp(18px, 3vw, 28px) clamp(16px, 3vw, 28px) 0;
       position:relative;
       z-index:2;
     }
 
+    /* No border for top invite part */
     .badge{
       display:inline-flex;
       align-items:center;
       gap:10px;
       padding:10px 14px;
       border-radius:999px;
-      border:1px solid rgba(17,24,39,.10);
-      background: rgba(255,255,255,.76);
+      background: rgba(255,255,255,.70);
       font-size:12.5px;
-      letter-spacing:.08em;
+      letter-spacing:.10em;
       text-transform:uppercase;
       color:var(--muted);
     }
@@ -121,41 +153,43 @@
     @keyframes pulse{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.6)} }
 
     h1{
-      margin: 16px 0 8px;
+      margin:16px 0 8px;
       font-size: clamp(26px, 4.4vw, 48px);
       line-height:1.08;
       letter-spacing:-.02em;
-      color:#111827;
     }
     .subtitle{
       margin:0 auto;
-      max-width: 56ch;
+      max-width: 60ch;
       color:var(--muted);
       font-size: clamp(14px, 1.8vw, 18px);
     }
 
     .content{
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: clamp(12px, 2.2vw, 20px);
+      grid-template-columns: 1.25fr .75fr;
+      gap: clamp(12px, 2.2vw, 22px);
       padding: clamp(14px, 2.8vw, 24px) clamp(14px, 3vw, 28px) clamp(16px, 3vw, 30px);
       position:relative;
       z-index:2;
+      align-items:stretch;
     }
 
+    /* Panels: NO borders (as requested) */
     .panel{
-      border:1px solid rgba(17,24,39,.10);
-      background: rgba(255,255,255,.64);
+      background: transparent;
+      border: none;
       border-radius: 18px;
-      padding: clamp(14px, 2.4vw, 18px);
-      position:relative;
-      overflow:hidden;
+      padding: clamp(12px, 2.1vw, 16px);
+      transition: transform .18s ease, filter .18s ease;
     }
+    .card:hover .panel{ transform: translateY(-2px); }
 
+    /* Name block: NO border */
     .name{
-      font-size: clamp(24px, 3.8vw, 44px);
+      font-size: clamp(26px, 3.8vw, 46px);
       font-weight: 900;
-      margin: 10px 0 8px;
+      margin: 6px 0 8px;
       background: linear-gradient(90deg, #111827, #111827, rgba(236,72,153,.95));
       -webkit-background-clip:text;
       background-clip:text;
@@ -163,11 +197,10 @@
     }
     .name small{
       display:block;
-      font-weight:600;
-      letter-spacing:.01em;
-      color:var(--muted);
+      margin-top:8px;
       font-size: clamp(12.5px, 1.6vw, 14px);
-      margin-top:6px;
+      font-weight: 650;
+      color:var(--muted);
     }
 
     .divider{
@@ -182,133 +215,83 @@
       gap:12px;
       margin-top:12px;
     }
+
+    /* Small “chips” (still clean, not heavy borders) */
     .kv{
       padding:12px 12px;
       border-radius:14px;
-      border:1px solid rgba(17,24,39,.08);
-      background: rgba(255,255,255,.74);
-      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 12px 28px rgba(31,41,55,.06);
+      transition: transform .16s ease;
+      will-change: transform;
     }
-    .kv:hover{
-      transform: translateY(-2px);
-      border-color: rgba(17,24,39,.14);
-      box-shadow: 0 12px 26px rgba(31,41,55,.08);
-    }
-    .k{font-size:12px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase}
-    .v{margin-top:6px; font-size:16px; color:#111827}
+    .kv:hover{ transform: translateY(-2px) scale(1.01); }
 
-    .ctaRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:14px;
+    .k{
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
-    .btn{
-      appearance:none;
-      border:1px solid rgba(17,24,39,.12);
-      background: rgba(255,255,255,.82);
-      color:#111827;
-      padding: 12px 14px;
-      border-radius:14px;
-      cursor:pointer;
-      font-weight:800;
-      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      user-select:none;
-      min-height: 44px; /* tap friendly */
-      touch-action: manipulation;
-    }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(236,72,153,.32); box-shadow: 0 10px 26px rgba(31,41,55,.10)}
-    .btn:active{transform: translateY(0) scale(.99)}
-    .btn.primary{
-      border-color: rgba(236,72,153,.45);
-      background: linear-gradient(180deg, rgba(244,114,182,.30), rgba(255,255,255,.82));
-    }
+    .v{ margin-top:6px; font-size:16px; color:#111827; font-weight: 800; }
 
-    .capWrap{
+    /* Illustration area */
+    .artBox{
+      height: 100%;
+      min-height: 280px;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      gap:12px;
+      gap:10px;
       text-align:center;
-      min-height: 320px;
+      padding: 10px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 35% 30%, rgba(244,114,182,.20) 0%, transparent 60%),
+                  radial-gradient(circle at 70% 75%, rgba(167,139,250,.20) 0%, transparent 60%),
+                  rgba(255,255,255,.55);
+      box-shadow: 0 18px 42px rgba(31,41,55,.08);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .card:hover .artBox{
+      transform: translateY(-3px);
+      box-shadow: 0 22px 52px rgba(31,41,55,.10);
     }
 
-    .capBtn{
-      width: clamp(160px, 34vw, 190px);
-      height: clamp(160px, 34vw, 190px);
-      border-radius: 30px;
-      border:1px solid rgba(17,24,39,.10);
-      background:
-        radial-gradient(circle at 30% 25%, rgba(236,72,153,.12), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(167,139,250,.14), transparent 60%),
-        rgba(255,255,255,.78);
-      box-shadow: 0 16px 40px rgba(31,41,55,.12);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      position:relative;
-      overflow:hidden;
-      transition: transform .18s ease, border-color .18s ease;
-      touch-action: manipulation;
+    /* Animated doctor-woman image from internet (SVG) */
+    .docImg{
+      width: min(220px, 55vw);
+      aspect-ratio: 1/1;
+      user-select:none;
+      -webkit-user-drag:none;
+      filter: drop-shadow(0 18px 22px rgba(31,41,55,.16));
+      transform: translateY(0) rotate(0deg);
+      transition: transform .2s ease;
+      animation: floaty 3.4s ease-in-out infinite;
     }
-    .capBtn:hover{ transform: translateY(-2px) rotate(-.3deg); border-color: rgba(236,72,153,.30)}
-    .capBtn:active{ transform: translateY(0) scale(.98); }
-
-    .cap{
-      width:110px; height:76px;
-      position:relative;
-      filter: drop-shadow(0 12px 16px rgba(31,41,55,.18));
+    @keyframes floaty{
+      0%,100%{transform: translateY(0)}
+      50%{transform: translateY(-10px)}
     }
-    .cap:before{
-      content:"";
-      position:absolute; left:0; right:0; top:22px;
-      height:38px;
-      background: linear-gradient(180deg, #334155, #1f2937);
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.25);
-    }
-    .cap:after{
-      content:"";
-      position:absolute; left:-10px; right:-10px; top:0;
-      height:30px;
-      background: linear-gradient(180deg, #475569, #1f2937);
-      transform: skewX(-18deg);
-      border-radius: 10px;
-      border:1px solid rgba(255,255,255,.25);
-    }
-    .tassel{
-      position:absolute;
-      right:18px; top:26px;
-      width:12px; height:54px;
-      background: linear-gradient(180deg, var(--rose), var(--rose2));
-      border-radius: 10px;
-      transform-origin: top;
-      animation: swing 2s ease-in-out infinite;
-      box-shadow: 0 0 22px rgba(236,72,153,.35);
-    }
-    .tassel:after{
-      content:"";
-      position:absolute; left:-6px; right:-6px; bottom:-10px;
-      height:18px;
-      background: linear-gradient(180deg, var(--rose2), #be185d);
-      border-radius: 999px;
-    }
-    @keyframes swing{
-      0%,100%{transform:rotate(-10deg)}
-      50%{transform:rotate(12deg)}
+    .artBox:hover .docImg{
+      transform: translateY(-6px) rotate(-1.2deg) scale(1.03);
+      animation-duration: 1.6s;
     }
 
-    .tip{
-      color:var(--muted);
-      font-size: clamp(13px, 1.7vw, 14px);
+    .artTitle{
+      font-weight: 900;
+      font-size: 16px;
+      color:#111827;
       margin:0;
-      max-width: 40ch;
+    }
+    .artNote{
+      margin:0;
+      color:var(--muted);
+      font-size: 13px;
+      max-width: 34ch;
     }
 
+    /* Footer */
     footer{
       padding: 0 clamp(16px, 3vw, 28px) clamp(18px, 3vw, 26px);
       text-align:center;
@@ -322,75 +305,28 @@
       color:#111827;
     }
 
-    canvas#confetti{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      z-index:999;
+    /* Hover animations for key text blocks */
+    .hoverLift{
+      display:inline-block;
+      transition: transform .18s ease, filter .18s ease;
+      will-change: transform;
+    }
+    .card:hover .hoverLift{
+      transform: translateY(-2px);
+      filter: drop-shadow(0 10px 14px rgba(31,41,55,.10));
     }
 
-    /* Modal */
-    .modalBack{
-      position:fixed; inset:0;
-      background: rgba(17,24,39,.45);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-      z-index:1000;
-    }
-    .modal{
-      width:min(560px, 100%);
-      background: rgba(255,255,255,.94);
-      border:1px solid rgba(17,24,39,.10);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-      padding:18px;
-      backdrop-filter: blur(10px);
-    }
-    .modal h3{margin:6px 0 8px; color:#111827}
-    .modal p{margin:0 0 12px; color:var(--muted)}
-    .closeRow{display:flex; justify-content:flex-end; gap:10px; margin-top:10px}
-    .input{
-      width:100%;
-      padding:12px 12px;
-      border-radius:12px;
-      border:1px solid rgba(17,24,39,.12);
-      background: rgba(255,255,255,.95);
-      color:#111827;
-      outline:none;
-      min-height: 44px;
-    }
-    .input:focus{border-color: rgba(236,72,153,.40)}
-
-    /* ---------- Responsive behavior (auto-fit) ---------- */
+    /* Responsive */
     @media (max-width: 820px){
-      .content{grid-template-columns:1fr;}
-      .capWrap{min-height:auto}
-    }
-    @media (max-width: 480px){
-      .badge{font-size:11.5px}
-      .details{grid-template-columns:1fr}
-      .ctaRow .btn{flex:1 1 calc(50% - 10px)} /* 2 per row on phones */
+      .content{ grid-template-columns: 1fr; }
+      .artBox{ min-height: 220px; }
+      .details{ grid-template-columns: 1fr; }
     }
 
-    /* ---------- Adaptive animation based on device ---------- */
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce){
       *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
     }
-
-    /* Mobile-like: softer motion */
-    .animate-in{
-      opacity:0;
-      transform: translateY(10px);
-    }
-    .animate-in.show{
-      opacity:1;
-      transform: translateY(0);
-      transition: opacity .55s ease, transform .55s ease;
-    }
-
   </style>
 </head>
 
@@ -399,20 +335,20 @@
   <canvas id="confetti"></canvas>
 
   <div class="wrap">
-    <main class="card" role="main" aria-label="Graduation Invitation">
-      <div class="ribbon"></div>
-      <div class="ribbon2"></div>
+    <main class="card" aria-label="Graduation Invitation">
+      <div class="glowA"></div>
+      <div class="glowB"></div>
 
-      <header class="animate-in" id="headBlock">
-        <div class="badge"><span class="spark"></span> You’re Invited • Graduation Ceremony</div>
-        <h1>Celebrating a Proud Milestone</h1>
+      <header>
+        <div class="badge hoverLift"><span class="spark"></span> You’re Invited • Graduation Ceremony</div>
+        <h1 class="hoverLift">Celebrating a Proud Milestone</h1>
         <p class="subtitle">Please join us to honor and celebrate this special day.</p>
       </header>
 
       <section class="content">
-        <!-- LEFT -->
-        <div class="panel animate-in" id="leftBlock">
-          <div class="name">
+        <!-- LEFT: Invitation -->
+        <div class="panel">
+          <div class="name hoverLift">
             Dr. Harika Killi
             <small>D/o Ramana Rao Killi &amp; Latha Killi • Brother: Pradeep Sai Killi</small>
           </div>
@@ -433,159 +369,35 @@
               <div class="v">Dr. PSIMS &amp; RF</div>
             </div>
           </div>
-
-          <div class="ctaRow">
-            <button class="btn primary" id="celebrateBtn" type="button">🎉 Celebrate</button>
-            <button class="btn" id="saveBtn" type="button">📅 Add to Calendar</button>
-            <button class="btn" id="shareBtn" type="button">🔗 Copy Invite Text</button>
-            <button class="btn" id="rsvpBtn" type="button">✅ RSVP</button>
-          </div>
         </div>
 
-        <!-- RIGHT -->
-        <div class="panel capWrap animate-in" id="rightBlock">
-          <button class="capBtn" id="capBtn" type="button" aria-label="Tap the graduation cap to celebrate">
-            <div class="cap">
-              <div class="tassel"></div>
-            </div>
-            <div style="position:absolute; inset:auto 0 14px; text-align:center; color:var(--muted); font-size:13px;">
-              Tap the cap
-            </div>
-          </button>
-          <p class="tip">Tap the cap for a celebration pop ✨</p>
-          <p class="tip">Soft pastel theme + medical touch for a doctor’s special milestone.</p>
+        <!-- RIGHT: Doctor illustration + hover celebration hint -->
+        <div class="panel">
+          <div class="artBox" id="artBox" title="Hover here for celebration ✨">
+            <!-- Twemoji SVG (internet) -->
+            <img
+              class="docImg"
+              alt="Animated woman doctor illustration"
+              src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f469-200d-2695-fe0f.svg"
+            />
+            <p class="artTitle">A Doctor’s Special Day 💗</p>
+            <p class="artNote">Hover or tap here for a celebration pop ✨</p>
+          </div>
         </div>
       </section>
 
-      <footer class="animate-in" id="footBlock">
+      <footer>
         With warm regards, <span class="signature">Ramana Rao Killi</span> &amp; <span class="signature">Latha Killi</span>
       </footer>
     </main>
   </div>
 
-  <!-- RSVP modal -->
-  <div class="modalBack" id="modalBack" role="dialog" aria-modal="true" aria-label="RSVP">
-    <div class="modal">
-      <h3>RSVP</h3>
-      <p>Enter your name (optional). This will copy a ready RSVP message you can send.</p>
-      <input class="input" id="rsvpName" placeholder="Your name" />
-      <div class="closeRow">
-        <button class="btn" id="closeModal" type="button">Close</button>
-        <button class="btn primary" id="copyRsvp" type="button">Copy RSVP Message</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    // ----------- Responsive + adaptive animation -----------
-    // Shows sections with a slight stagger. On larger screens, a bit more delay feels nice.
-    const blocks = ["headBlock","leftBlock","rightBlock","footBlock"].map(id => document.getElementById(id));
-    const isSmall = window.matchMedia("(max-width: 820px)").matches;
-    const baseDelay = isSmall ? 60 : 90;
-
-    blocks.forEach((el, idx) => {
-      setTimeout(() => el.classList.add("show"), baseDelay * (idx+1));
-    });
-
-    // ---------- Helpers ----------
-    const $ = (id) => document.getElementById(id);
-
-    const INVITE_TEXT =
-`🎓 Graduation Invitation 🎓
-Please join us at the Graduation Ceremony of Dr. Harika Killi
-
-D/o: Ramana Rao Killi & Latha Killi
-Brother: Pradeep Sai Killi
-
-📍 Venue: Dr. PSIMS & RF
-🕔 Time: 5:00 PM
-📅 Date: 21 February 2026`;
-
-    function toast(msg){
-      const el = document.createElement("div");
-      el.textContent = msg;
-      el.style.position = "fixed";
-      el.style.left = "50%";
-      el.style.bottom = "22px";
-      el.style.transform = "translateX(-50%)";
-      el.style.padding = "12px 14px";
-      el.style.borderRadius = "14px";
-      el.style.background = "rgba(255,255,255,.92)";
-      el.style.border = "1px solid rgba(17,24,39,.12)";
-      el.style.color = "#111827";
-      el.style.boxShadow = "0 18px 45px rgba(31,41,55,.16)";
-      el.style.zIndex = 2000;
-      el.style.opacity = "0";
-      el.style.transition = "opacity .18s ease, transform .18s ease";
-      document.body.appendChild(el);
-      requestAnimationFrame(() => { el.style.opacity = "1"; el.style.transform = "translateX(-50%) translateY(-4px)"; });
-      setTimeout(() => {
-        el.style.opacity = "0";
-        el.style.transform = "translateX(-50%) translateY(0)";
-        setTimeout(()=> el.remove(), 220);
-      }, 1600);
-    }
-
-    async function copyText(text){
-      try{
-        await navigator.clipboard.writeText(text);
-        toast("Copied!");
-      }catch(e){
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        ta.remove();
-        toast("Copied!");
-      }
-    }
-
-    // ---------- Calendar (.ics) ----------
-    function downloadICS(){
-      const uid = "harika-killi-grad-2026@" + location.host;
-      const dtstamp = new Date().toISOString().replace(/[-:]/g,"").split(".")[0] + "Z";
-
-      // Floating local time (simple + works everywhere)
-      const dtStart = "20260221T170000";
-      const dtEnd   = "20260221T190000";
-
-      const ics =
-`BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Graduation Invitation//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-BEGIN:VEVENT
-UID:${uid}
-DTSTAMP:${dtstamp}
-DTSTART:${dtStart}
-DTEND:${dtEnd}
-SUMMARY:Graduation Ceremony - Dr. Harika Killi
-LOCATION:Dr. PSIMS & RF
-DESCRIPTION:Please join us for the Graduation Ceremony of Dr. Harika Killi.
-END:VEVENT
-END:VCALENDAR`;
-
-      const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Graduation_Invitation_Dr_Harika_Killi.ics";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-      toast("Calendar file downloaded");
-    }
-
     // ---------- Confetti ----------
-    const canvas = $("confetti");
+    const canvas = document.getElementById("confetti");
     const ctx = canvas.getContext("2d");
-    let W, H;
 
     function resize(){
-      // Use devicePixelRatio for crisp confetti
       const dpr = window.devicePixelRatio || 1;
       canvas.width = Math.floor(window.innerWidth * dpr);
       canvas.height = Math.floor(window.innerHeight * dpr);
@@ -597,9 +409,10 @@ END:VCALENDAR`;
     resize();
 
     const confetti = [];
-    function rand(min,max){ return Math.random()*(max-min)+min; }
+    const rand = (min,max)=> Math.random()*(max-min)+min;
 
-    function burst(x, y, n=170){
+    function burst(x, y, n=150){
+      const hues = [330, 300, 165, 280]; // pink/lavender/mint tones
       for(let i=0;i<n;i++){
         confetti.push({
           x, y,
@@ -610,7 +423,7 @@ END:VCALENDAR`;
           a: rand(0, Math.PI*2),
           s: rand(0.05, 0.14),
           life: rand(70, 120),
-          hue: [330, 300, 165, 280][Math.floor(rand(0,4))] // pink/lavender/mint tones
+          hue: hues[(Math.random()*hues.length)|0]
         });
       }
     }
@@ -641,47 +454,31 @@ END:VCALENDAR`;
     }
     step();
 
-    function celebrateAt(el){
+    // Celebration on hover/tap (doctor illustration box)
+    const artBox = document.getElementById("artBox");
+    let hoverTimer = null;
+
+    function celebrateAt(el, amount=160){
       const rect = el.getBoundingClientRect();
       const x = rect.left + rect.width/2;
       const y = rect.top + rect.height/2;
-      burst(x, y);
-      setTimeout(()=> burst(x + rand(-40,40), y + rand(-30,30), 90), 120);
+      burst(x, y, amount);
+      setTimeout(()=> burst(x + rand(-40,40), y + rand(-30,30), Math.floor(amount*0.55)), 120);
     }
 
-    // ---------- Events ----------
-    $("capBtn").addEventListener("click", (e)=>{
-      celebrateAt(e.currentTarget);
-      toast("Congratulations! 🎉");
+    artBox.addEventListener("mouseenter", () => {
+      // prevent spam if user moves around
+      if (hoverTimer) return;
+      celebrateAt(artBox, 150);
+      hoverTimer = setTimeout(()=> hoverTimer = null, 900);
     });
 
-    $("celebrateBtn").addEventListener("click", ()=>{
-      burst(window.innerWidth*0.5, window.innerHeight*0.35, 220);
-      toast("Celebration time! 🎉");
+    artBox.addEventListener("click", () => {
+      celebrateAt(artBox, 180);
     });
 
-    $("saveBtn").addEventListener("click", downloadICS);
-    $("shareBtn").addEventListener("click", ()=> copyText(INVITE_TEXT));
-
-    // RSVP modal
-    const modalBack = $("modalBack");
-    $("rsvpBtn").addEventListener("click", ()=> {
-      modalBack.style.display = "flex";
-      $("rsvpName").focus();
-    });
-    $("closeModal").addEventListener("click", ()=> modalBack.style.display = "none");
-    modalBack.addEventListener("click", (e)=>{ if(e.target === modalBack) modalBack.style.display="none"; });
-
-    $("copyRsvp").addEventListener("click", ()=>{
-      const name = $("rsvpName").value.trim();
-      const msg = name
-        ? `Hi, this is ${name}. I’m happy to attend the Graduation Ceremony of Dr. Harika Killi on 21 Feb 2026 at 5:00 PM (Dr. PSIMS & RF).`
-        : `Hi, I’m happy to attend the Graduation Ceremony of Dr. Harika Killi on 21 Feb 2026 at 5:00 PM (Dr. PSIMS & RF).`;
-      copyText(msg);
-    });
-
-    // Gentle auto celebration on load (smaller on phones)
-    setTimeout(()=> burst(window.innerWidth*0.5, window.innerHeight*0.24, isSmall ? 90 : 120), 650);
+    // Gentle welcome celebration
+    setTimeout(()=> burst(window.innerWidth*0.5, window.innerHeight*0.22, 110), 650);
   </script>
 </body>
 </html>
