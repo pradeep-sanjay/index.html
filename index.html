@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Graduation Invitation — Dr. Harika Killi</title>
+  <meta name="description" content="Graduation invitation for Dr. Harika Killi — 21 Feb 2026, 5:00 PM, Dr. PSIMS & RF" />
+
+  <style>
+    :root{
+      --bg1:#0b0f1a;
+      --bg2:#121a2b;
+      --card:#0f172aee;
+      --ink:#f8fafc;
+      --muted:#cbd5e1;
+      --gold:#f5c65b;
+      --gold2:#d8a63b;
+      --line:#ffffff1a;
+      --shadow: 0 24px 70px rgba(0,0,0,.55);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, #273b7a55 0%, transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, #7a3b2750 0%, transparent 55%),
+        radial-gradient(900px 600px at 60% 90%, #1b8a7c40 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    /* subtle moving grain */
+    .grain{
+      pointer-events:none;
+      position:fixed; inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity:.25;
+      animation: drift 12s linear infinite;
+    }
+    @keyframes drift { from{transform:translate3d(0,0,0)} to{transform:translate3d(-80px, 40px,0)} }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:28px 16px 60px;
+    }
+
+    .card{
+      width:min(920px, 100%);
+      background: linear-gradient(180deg, #0f172ae8, #0b1224f2);
+      border:1px solid #ffffff1a;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      transform: translateY(8px);
+      opacity:0;
+      animation: enter .9s ease forwards;
+    }
+    @keyframes enter{
+      to{transform:translateY(0); opacity:1}
+    }
+
+    /* decorative glow */
+    .glow{
+      position:absolute; inset:-220px -200px auto auto;
+      width:520px; height:520px;
+      background: radial-gradient(circle at 30% 30%, #f5c65b66 0%, transparent 60%);
+      filter: blur(12px);
+      transform: rotate(12deg);
+      opacity:.9;
+    }
+    .glow2{
+      position:absolute; inset:auto auto -260px -220px;
+      width:600px; height:600px;
+      background: radial-gradient(circle at 45% 45%, #2dd4bf44 0%, transparent 62%);
+      filter: blur(14px);
+      opacity:.8;
+    }
+
+    header{
+      padding:28px 28px 0;
+      text-align:center;
+      position:relative;
+      z-index:2;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid #ffffff22;
+      background:#0b1224aa;
+      font-size:13px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+    .spark{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+      box-shadow: 0 0 18px #f5c65baa;
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.6)} }
+
+    h1{
+      margin:18px 0 8px;
+      font-size: clamp(30px, 4.5vw, 48px);
+      line-height:1.1;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(14px, 1.7vw, 18px);
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:20px;
+      padding:24px 28px 30px;
+      position:relative;
+      z-index:2;
+    }
+
+    @media (max-width: 820px){
+      .content{grid-template-columns:1fr; padding:18px 18px 26px}
+      header{padding:22px 18px 0}
+    }
+
+    .panel{
+      border:1px solid #ffffff14;
+      background: linear-gradient(180deg, #0b1224cc, #0b122488);
+      border-radius: 18px;
+      padding:18px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .name{
+      font-size: clamp(26px, 3.6vw, 44px);
+      font-weight: 700;
+      margin: 10px 0 8px;
+      background: linear-gradient(180deg, #fff, #c7d2fe);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .name small{
+      display:block;
+      font-weight:500;
+      letter-spacing:.02em;
+      color:var(--muted);
+      font-size: 14px;
+      margin-top:6px;
+    }
+
+    .goldline{
+      height:1px;
+      background: linear-gradient(90deg, transparent, #f5c65b99, transparent);
+      margin:14px 0 14px;
+    }
+
+    .details{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .kv{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid #ffffff10;
+      background:#0b1224b0;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .kv:hover{
+      transform: translateY(-2px);
+      border-color:#ffffff2a;
+    }
+    .k{font-size:12px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase}
+    .v{margin-top:6px; font-size:16px}
+
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+    .btn{
+      appearance:none;
+      border:1px solid #ffffff22;
+      background: #0b1224cc;
+      color:var(--ink);
+      padding:12px 14px;
+      border-radius:14px;
+      cursor:pointer;
+      font-weight:600;
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px); border-color:#ffffff38; box-shadow: 0 10px 28px rgba(0,0,0,.22)}
+    .btn.primary{
+      border-color: #f5c65b55;
+      background: linear-gradient(180deg, #f5c65b22, #0b1224cc);
+    }
+
+    .capWrap{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      min-height: 320px;
+      text-align:center;
+    }
+
+    /* cap button */
+    .capBtn{
+      width: 190px;
+      height: 190px;
+      border-radius: 30px;
+      border:1px solid #ffffff18;
+      background: radial-gradient(circle at 30% 25%, #ffffff14, transparent 60%),
+                  linear-gradient(180deg, #0b1224cc, #0b122488);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      position:relative;
+      overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .capBtn:hover{ transform: translateY(-2px) rotate(-.3deg); border-color:#ffffff2b}
+    .capBtn:active{ transform: translateY(0) scale(.98); }
+
+    /* simple cap icon */
+    .cap{
+      width:110px; height:76px;
+      position:relative;
+      filter: drop-shadow(0 12px 18px rgba(0,0,0,.45));
+    }
+    .cap:before{
+      content:"";
+      position:absolute; left:0; right:0; top:22px;
+      height:38px;
+      background: linear-gradient(180deg, #111827, #0b1020);
+      border-radius: 14px;
+      border:1px solid #ffffff12;
+    }
+    .cap:after{
+      content:"";
+      position:absolute; left:-10px; right:-10px; top:0;
+      height:30px;
+      background: linear-gradient(180deg, #1f2937, #0b1020);
+      transform: skewX(-18deg);
+      border-radius: 10px;
+      border:1px solid #ffffff12;
+    }
+    .tassel{
+      position:absolute;
+      right:18px; top:26px;
+      width:12px; height:54px;
+      background: linear-gradient(180deg, var(--gold), var(--gold2));
+      border-radius: 10px;
+      transform-origin: top;
+      animation: swing 2s ease-in-out infinite;
+      box-shadow: 0 0 22px #f5c65b55;
+    }
+    .tassel:after{
+      content:"";
+      position:absolute; left:-6px; right:-6px; bottom:-10px;
+      height:18px;
+      background: linear-gradient(180deg, var(--gold2), #b77f1f);
+      border-radius: 999px;
+    }
+    @keyframes swing{
+      0%,100%{transform:rotate(-10deg)}
+      50%{transform:rotate(12deg)}
+    }
+
+    .tip{
+      color:var(--muted);
+      font-size:14px;
+      margin:0;
+    }
+
+    footer{
+      padding:0 28px 26px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      position:relative;
+      z-index:2;
+    }
+
+    /* confetti canvas */
+    canvas#confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:999;
+    }
+
+    /* modal */
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+      z-index:1000;
+    }
+    .modal{
+      width:min(560px, 100%);
+      background: linear-gradient(180deg, #0f172a, #0b1224);
+      border:1px solid #ffffff1a;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .modal h3{margin:6px 0 8px}
+    .modal p{margin:0 0 12px; color:var(--muted)}
+    .closeRow{display:flex; justify-content:flex-end; gap:10px; margin-top:10px}
+    .input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid #ffffff18;
+      background:#0b1224;
+      color:var(--ink);
+      outline:none;
+    }
+    .input:focus{border-color:#ffffff32}
+  </style>
+</head>
+
+<body>
+  <div class="grain"></div>
+  <canvas id="confetti"></canvas>
+
+  <div class="wrap">
+    <main class="card" role="main" aria-label="Graduation Invitation">
+      <div class="glow"></div>
+      <div class="glow2"></div>
+
+      <header>
+        <div class="badge"><span class="spark"></span> You’re Invited • Graduation Ceremony</div>
+        <h1>Celebrating a Proud Milestone</h1>
+        <p class="subtitle">Please join us to honor and celebrate this special day.</p>
+      </header>
+
+      <section class="content">
+        <!-- LEFT -->
+        <div class="panel">
+          <div class="name">
+            Dr. Harika Killi
+            <small>D/o Ramana Rao Killi &amp; Latha Killi • Brother: Pradeep Sai Killi</small>
+          </div>
+
+          <div class="goldline"></div>
+
+          <div class="details" aria-label="Event details">
+            <div class="kv">
+              <div class="k">Date</div>
+              <div class="v">21 February 2026</div>
+            </div>
+            <div class="kv">
+              <div class="k">Time</div>
+              <div class="v">5:00 PM</div>
+            </div>
+            <div class="kv" style="grid-column:1/-1">
+              <div class="k">Venue</div>
+              <div class="v">Dr. PSIMS &amp; RF</div>
+            </div>
+          </div>
+
+          <div class="ctaRow">
+            <button class="btn primary" id="celebrateBtn" type="button">🎉 Celebrate</button>
+            <button class="btn" id="saveBtn" type="button">📅 Add to Calendar</button>
+            <button class="btn" id="shareBtn" type="button">🔗 Copy Invite Text</button>
+            <button class="btn" id="rsvpBtn" type="button">✅ RSVP</button>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="panel capWrap">
+          <button class="capBtn" id="capBtn" type="button" aria-label="Tap the graduation cap to celebrate">
+            <div class="cap">
+              <div class="tassel"></div>
+            </div>
+            <div style="position:absolute; inset:auto 0 14px; text-align:center; color:var(--muted); font-size:13px;">
+              Tap the cap
+            </div>
+          </button>
+          <p class="tip">Tap the cap for a celebration pop ✨</p>
+          <p class="tip" style="max-width:320px">You can also use the buttons to add the event to your calendar or share the invitation.</p>
+        </div>
+      </section>
+
+      <footer>
+        With warm regards, <span style="color:#fff">Ramana Rao Killi</span> &amp; <span style="color:#fff">Latha Killi</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- RSVP modal -->
+  <div class="modalBack" id="modalBack" role="dialog" aria-modal="true" aria-label="RSVP">
+    <div class="modal">
+      <h3>RSVP</h3>
+      <p>Enter your name (optional). This will copy a ready RSVP message you can send.</p>
+      <input class="input" id="rsvpName" placeholder="Your name" />
+      <div class="closeRow">
+        <button class="btn" id="closeModal" type="button">Close</button>
+        <button class="btn primary" id="copyRsvp" type="button">Copy RSVP Message</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- Helpers ----------
+    const $ = (id) => document.getElementById(id);
+
+    const INVITE_TEXT =
+`🎓 Graduation Invitation 🎓
+Please join us at the Graduation Ceremony of Dr. Harika Killi
+
+D/o: Ramana Rao Killi & Latha Killi
+Brother: Pradeep Sai Killi
+
+📍 Venue: Dr. PSIMS & RF
+🕔 Time: 5:00 PM
+📅 Date: 21 February 2026`;
+
+    function toast(msg){
+      const el = document.createElement("div");
+      el.textContent = msg;
+      el.style.position = "fixed";
+      el.style.left = "50%";
+      el.style.bottom = "22px";
+      el.style.transform = "translateX(-50%)";
+      el.style.padding = "12px 14px";
+      el.style.borderRadius = "14px";
+      el.style.background = "rgba(15,23,42,.92)";
+      el.style.border = "1px solid rgba(255,255,255,.18)";
+      el.style.color = "#f8fafc";
+      el.style.boxShadow = "0 18px 45px rgba(0,0,0,.45)";
+      el.style.zIndex = 2000;
+      el.style.opacity = "0";
+      el.style.transition = "opacity .18s ease, transform .18s ease";
+      document.body.appendChild(el);
+      requestAnimationFrame(() => { el.style.opacity = "1"; el.style.transform = "translateX(-50%) translateY(-4px)"; });
+      setTimeout(() => {
+        el.style.opacity = "0";
+        el.style.transform = "translateX(-50%) translateY(0)";
+        setTimeout(()=> el.remove(), 220);
+      }, 1600);
+    }
+
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Copied!");
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+        toast("Copied!");
+      }
+    }
+
+    // ---------- Calendar (.ics) ----------
+    function downloadICS(){
+      // 21 Feb 2026 5:00 PM local time (floating). If you want timezone-accurate, tell me your timezone.
+      const uid = "harika-killi-grad-2026@" + location.host;
+      const dtstamp = new Date().toISOString().replace(/[-:]/g,"").split(".")[0] + "Z";
+
+      // Floating time format (no Z)
+      const dtStart = "20260221T170000";
+      const dtEnd   = "20260221T190000";
+
+      const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Graduation Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${dtstamp}
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:Graduation Ceremony - Dr. Harika Killi
+LOCATION:Dr. PSIMS & RF
+DESCRIPTION:Please join us for the Graduation Ceremony of Dr. Harika Killi.
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Graduation_Invitation_Dr_Harika_Killi.ics";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast("Calendar file downloaded");
+    }
+
+    // ---------- Confetti ----------
+    const canvas = $("confetti");
+    const ctx = canvas.getContext("2d");
+    let W, H;
+    function resize(){
+      W = canvas.width = window.innerWidth * devicePixelRatio;
+      H = canvas.height = window.innerHeight * devicePixelRatio;
+      ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    const confetti = [];
+    function rand(min,max){ return Math.random()*(max-min)+min; }
+
+    function burst(x, y, n=180){
+      for(let i=0;i<n;i++){
+        confetti.push({
+          x, y,
+          vx: rand(-6,6),
+          vy: rand(-12,-3),
+          g: rand(0.18,0.35),
+          r: rand(2,4),
+          a: rand(0, Math.PI*2),
+          s: rand(0.05, 0.14),
+          life: rand(70, 120),
+          hue: rand(35, 55) // gold-ish
+        });
+      }
+    }
+
+    function step(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      for(let i=confetti.length-1;i>=0;i--){
+        const p = confetti[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += p.g;
+        p.a += p.s;
+        p.life -= 1;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.a);
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life/120));
+        ctx.fillStyle = `hsl(${p.hue} 90% 60%)`;
+        ctx.fillRect(-p.r, -p.r, p.r*2.4, p.r*1.4);
+        ctx.restore();
+
+        if(p.life <= 0 || p.y > window.innerHeight + 80){
+          confetti.splice(i,1);
+        }
+      }
+      requestAnimationFrame(step);
+    }
+    step();
+
+    function celebrateAt(el){
+      const rect = el.getBoundingClientRect();
+      const x = rect.left + rect.width/2;
+      const y = rect.top + rect.height/2;
+      burst(x, y);
+      // small extra sparkles
+      setTimeout(()=> burst(x + rand(-40,40), y + rand(-30,30), 90), 120);
+    }
+
+    // ---------- Events ----------
+    $("capBtn").addEventListener("click", (e)=>{
+      celebrateAt(e.currentTarget);
+      toast("Congratulations! 🎉");
+    });
+
+    $("celebrateBtn").addEventListener("click", ()=>{
+      burst(window.innerWidth*0.5, window.innerHeight*0.35, 220);
+      toast("Celebration time! 🎉");
+    });
+
+    $("saveBtn").addEventListener("click", downloadICS);
+
+    $("shareBtn").addEventListener("click", ()=> copyText(INVITE_TEXT));
+
+    // RSVP modal
+    const modalBack = $("modalBack");
+    $("rsvpBtn").addEventListener("click", ()=> {
+      modalBack.style.display = "flex";
+      $("rsvpName").focus();
+    });
+    $("closeModal").addEventListener("click", ()=> modalBack.style.display = "none");
+    modalBack.addEventListener("click", (e)=>{ if(e.target === modalBack) modalBack.style.display="none"; });
+
+    $("copyRsvp").addEventListener("click", ()=>{
+      const name = $("rsvpName").value.trim();
+      const msg = name
+        ? `Hi, this is ${name}. I’m happy to attend the Graduation Ceremony of Dr. Harika Killi on 21 Feb 2026 at 5:00 PM (Dr. PSIMS & RF).`
+        : `Hi, I’m happy to attend the Graduation Ceremony of Dr. Harika Killi on 21 Feb 2026 at 5:00 PM (Dr. PSIMS & RF).`;
+      copyText(msg);
+    });
+
+    // Auto mini celebration on load
+    setTimeout(()=> burst(window.innerWidth*0.5, window.innerHeight*0.25, 120), 550);
+  </script>
+</body>
+</html>
